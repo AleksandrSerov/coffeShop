@@ -2,27 +2,71 @@ import React, { Component } from "react";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-
+import CoffeeService from "../../services/CoffeeService/CoffeService";
 import "./MainPage.sass";
 import BeansLogo from "../../media/logo/Beans_logo.svg";
 import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
 
 class MainPage extends Component {
+  service = new CoffeeService();
+  state = {
+    initialData: {}
+  };
+  constructor() {
+    super();
+  }
+  componentDidMount() {
+    this.service.getData().then(r => {
+      this.setState({
+        initialData: { ...r }
+      });
+    });
+  }
+
   render() {
+    console.log(this.state);
+    const items = (
+      <>
+        <div className="best__item">
+          <img
+            src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
+            alt="coffee"
+          />
+          <div className="best__item-title">Solimo Coffee Beans 2kg</div>
+          <div className="best__item-price">10.73$</div>
+        </div>
+        <div className="best__item">
+          <img
+            src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
+            alt="coffee"
+          />
+          <div className="best__item-title">Presto Coffee Beans 1kg</div>
+          <div className="best__item-price">15.99$</div>
+        </div>
+        <div className="best__item">
+          <img
+            src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
+            alt="coffee"
+          />
+          <div className="best__item-title">AROMISTICO Coffee 1kg</div>
+          <div className="best__item-price">6.99$</div>
+        </div>
+      </>
+    );
     return (
       <>
-        <div class="preview">
-          <div class="container">
+        <div className="preview">
+          <div className="container">
             <Header />
-            <div class="row">
-              <div class="col-lg-10 offset-lg-1">
-                <h1 class="title-big">Everything You Love About Coffee</h1>
-                <img class="beanslogo" src={BeansLogo} alt="Beans logo" />
-                <div class="preview__subtitle">
+            <div className="row">
+              <div className="col-lg-10 offset-lg-1">
+                <h1 className="title-big">Everything You Love About Coffee</h1>
+                <img className="beanslogo" src={BeansLogo} alt="Beans logo" />
+                <div className="preview__subtitle">
                   We makes every day full of energy and taste
                 </div>
-                <div class="preview__subtitle">Want to try our beans?</div>
-                <a href="#" class="preview__btn">
+                <div className="preview__subtitle">Want to try our beans?</div>
+                <a href="#" className="preview__btn">
                   More
                 </a>
               </div>
@@ -30,13 +74,17 @@ class MainPage extends Component {
           </div>
         </div>
 
-        <section class="about">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6 offset-lg-3">
-                <div class="title">About Us</div>
-                <img class="beanslogo" src={BeansLogoDark} alt="Beans logo" />
-                <div class="about__text">
+        <section className="about">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6 offset-lg-3">
+                <div className="title">About Us</div>
+                <img
+                  className="beanslogo"
+                  src={BeansLogoDark}
+                  alt="Beans logo"
+                />
+                <div className="about__text">
                   Extremity sweetness difficult behaviour he of. On disposal of
                   as landlord horrible. Afraid at highly months do things on at.
                   Situation recommend objection do intention so questions. As
@@ -57,37 +105,12 @@ class MainPage extends Component {
           </div>
         </section>
 
-        <section class="best">
-          <div class="container">
-            <div class="title">Our best</div>
-            <div class="row">
-              <div class="col-lg-10 offset-lg-1">
-                <div class="best__wrapper">
-                  <div class="best__item">
-                    <img
-                      src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
-                      alt="coffee"
-                    />
-                    <div class="best__item-title">Solimo Coffee Beans 2kg</div>
-                    <div class="best__item-price">10.73$</div>
-                  </div>
-                  <div class="best__item">
-                    <img
-                      src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
-                      alt="coffee"
-                    />
-                    <div class="best__item-title">Presto Coffee Beans 1kg</div>
-                    <div class="best__item-price">15.99$</div>
-                  </div>
-                  <div class="best__item">
-                    <img
-                      src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
-                      alt="coffee"
-                    />
-                    <div class="best__item-title">AROMISTICO Coffee 1kg</div>
-                    <div class="best__item-price">6.99$</div>
-                  </div>
-                </div>
+        <section className="best">
+          <div className="container">
+            <div className="title">Our best</div>
+            <div className="row">
+              <div className="col-lg-10 offset-lg-1">
+                <div className="best__wrapper">{items}</div>
               </div>
             </div>
           </div>
@@ -97,5 +120,4 @@ class MainPage extends Component {
     );
   }
 }
-
 export default MainPage;
