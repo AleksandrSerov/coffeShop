@@ -25,12 +25,36 @@ class CoffeePage extends Component {
     });
   };
 
-  handleSearch = () => {};
+  handleSearch = e => {
+    const { items } = this.props;
+    const updateList = items.coffee.filter(item => {
+      return item.name.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    this.setState({
+      shopItems: updateList
+    });
+  };
+
+  handleFiltreByCountry = e => {
+    console.log(e.target.textContent);
+    const { items } = this.props;
+    const updateList = items.coffee.filter(item => {
+      return item.country === e.target.textContent;
+    });
+    this.setState({
+      shopItems: updateList
+    });
+  };
+
   render() {
     const { items } = this.props;
-    const shopItems = items.coffee
-      ? this.renderShopItems(items.coffee)
-      : "Error";
+    console.log(items.coffee);
+    const shopItems =
+      Object.entries(this.state.shopItems).length === 0 && items.coffee
+        ? this.renderShopItems(items.coffee)
+        : Object.entries(this.state.shopItems).length != 0
+        ? this.renderShopItems(this.state.shopItems)
+        : "error";
     return (
       <>
         <div className="banner">
@@ -95,9 +119,24 @@ class CoffeePage extends Component {
                 <div className="shop__filter">
                   <div className="shop__filter-label">Or filter</div>
                   <div className="shop__filter-group">
-                    <button className="shop__filter-btn">Brazil</button>
-                    <button className="shop__filter-btn">Kenya</button>
-                    <button className="shop__filter-btn">Columbia</button>
+                    <button
+                      className="shop__filter-btn"
+                      onClick={this.handleFiltreByCountry}
+                    >
+                      Brazil
+                    </button>
+                    <button
+                      className="shop__filter-btn"
+                      onClick={this.handleFiltreByCountry}
+                    >
+                      Kenya
+                    </button>
+                    <button
+                      className="shop__filter-btn"
+                      onClick={this.handleFiltreByCountry}
+                    >
+                      Columbia
+                    </button>
                   </div>
                 </div>
               </div>
