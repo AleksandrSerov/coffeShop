@@ -46,7 +46,8 @@ class ItemPage extends Component {
   };
 
   render() {
-    const item = this.renderItem();
+    console.log(this.props);
+    const item = this.props.items.coffee ? this.renderItem() : "Error";
     return (
       <>
         <div className="banner">

@@ -64,11 +64,7 @@ class CoffeePage extends Component {
       <>
         <div className="banner">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-6">
-                <Header />
-              </div>
-            </div>
+            <Header />
             <h1 className="title-big">Our Coffee</h1>
           </div>
         </div>
