@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import BestItems from "../BestItems/BestItems";
 import CoffeeService from "../../services/CoffeeService/CoffeService";
 import actions from "../../store/actions";
 import { connect } from "react-redux";
@@ -12,39 +13,12 @@ import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
 
 class MainPage extends Component {
   service = new CoffeeService();
-  state = {
-    initialData: {}
-  };
-  constructor() {
-    super();
-  }
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(actions.handleSetInitialState(this.service.getData()));
   }
 
-  bestHandleClick = () => {
-    console.log("click");
-  };
-  renderBestItems = items => {
-    return items.map((item, index) => {
-      return (
-        <div className="best__item" key={index} onClick={this.bestHandleClick}>
-          <img src={item.url} alt={item.name} />
-          <div className="best__item-title">{item.name}</div>
-          <div className="best__item-price">{item.price}</div>
-        </div>
-      );
-    });
-  };
-
   render() {
-    const { items } = this.props;
-    console.log(items);
-    const bestItems = items.bestsellers
-      ? this.renderBestItems(items.bestsellers)
-      : "";
-
     return (
       <>
         <div className="preview">
@@ -96,17 +70,7 @@ class MainPage extends Component {
             </div>
           </div>
         </section>
-
-        <section className="best">
-          <div className="container">
-            <div className="title">Our best</div>
-            <div className="row">
-              <div className="col-lg-10 offset-lg-1">
-                <div className="best__wrapper">{bestItems}</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BestItems />
         <Footer />
       </>
     );
