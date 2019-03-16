@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./CoffeePage.sass";
 import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
@@ -11,16 +12,20 @@ class CoffeePage extends Component {
   state = {
     shopItems: {}
   };
-
+  handleClickGood = item => {
+    console.log(item);
+  };
   renderShopItems = items => {
     return items.map((item, index) => {
       return (
-        <div className="shop__item" key={index}>
-          <img src={item.url} alt={item.name} />
-          <div className="shop__item-title">{item.name}</div>
-          <div className="shop__item-country">{item.country}</div>
-          <div className="shop__item-price">{item.price}</div>
-        </div>
+        <Link to={`/item_page/${item.id}`}>
+          <div className="shop__item" key={index} data-number={index}>
+            <img src={item.url} alt={item.name} />
+            <div className="shop__item-title">{item.name}</div>
+            <div className="shop__item-country">{item.country}</div>
+            <div className="shop__item-price">{item.price}</div>
+          </div>
+        </Link>
       );
     });
   };
@@ -52,7 +57,7 @@ class CoffeePage extends Component {
     const shopItems =
       Object.entries(this.state.shopItems).length === 0 && items.coffee
         ? this.renderShopItems(items.coffee)
-        : Object.entries(this.state.shopItems).length != 0
+        : Object.entries(this.state.shopItems).length !== 0
         ? this.renderShopItems(this.state.shopItems)
         : "error";
     return (
