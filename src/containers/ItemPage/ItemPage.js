@@ -13,9 +13,6 @@ class ItemPage extends Component {
     const item = items.coffee.find(item => {
       return item.id === id;
     });
-    console.log(item);
-
-    console.log(item.name);
     return (
       <section className="shop">
         <div className="container">
@@ -46,7 +43,6 @@ class ItemPage extends Component {
   };
 
   render() {
-    console.log(this.props);
     const item = this.props.items.coffee ? this.renderItem() : "Error";
     return (
       <>

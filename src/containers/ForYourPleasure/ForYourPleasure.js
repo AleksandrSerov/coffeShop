@@ -3,12 +3,10 @@ import React, { Component } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import "./CoffeePage.sass";
 import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
-import CoffeeGirl from "../../media/img/coffee_girl.jpg";
-class CoffeePage extends Component {
+import CoffeeCup from "../../media/img/coffee_cup.png";
+class ForYourPleasure extends Component {
   state = {
     shopItems: {}
   };
@@ -16,21 +14,19 @@ class CoffeePage extends Component {
   renderShopItems = items => {
     return items.map((item, index) => {
       return (
-        <Link to={`/item_page/${item.id}`} className="shop__item" key={index}>
-          <div data-number={index}>
-            <img src={item.url} alt={item.name} />
-            <div className="shop__item-title">{item.name}</div>
-            <div className="shop__item-country">{item.country}</div>
-            <div className="shop__item-price">{item.price}</div>
-          </div>
-        </Link>
+        <div className="shop__item" key={index} data-number={index}>
+          <img src={item.url} alt={item.name} />
+          <div className="shop__item-title">{item.name}</div>
+          <div className="shop__item-country">{item.country}</div>
+          <div className="shop__item-price">{item.price}</div>
+        </div>
       );
     });
   };
 
   handleSearch = e => {
     const { items } = this.props;
-    const updateList = items.coffee.filter(item => {
+    const updateList = items.goods.filter(item => {
       return item.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
     this.setState({
@@ -40,7 +36,7 @@ class CoffeePage extends Component {
 
   handleFiltreByCountry = e => {
     const { items } = this.props;
-    const updateList = items.coffee.filter(item => {
+    const updateList = items.goods.filter(item => {
       return item.country === e.target.textContent;
     });
     this.setState({
@@ -51,8 +47,8 @@ class CoffeePage extends Component {
   render() {
     const { items } = this.props;
     const shopItems =
-      Object.entries(this.state.shopItems).length === 0 && items.coffee
-        ? this.renderShopItems(items.coffee)
+      Object.entries(this.state.shopItems).length === 0 && items.goods
+        ? this.renderShopItems(items.goods)
         : Object.entries(this.state.shopItems).length !== 0
         ? this.renderShopItems(this.state.shopItems)
         : "error";
@@ -61,14 +57,14 @@ class CoffeePage extends Component {
         <div className="banner">
           <div className="container">
             <Header />
-            <h1 className="title-big">Our Coffee</h1>
+            <h1 className="title-big">For your pleasure</h1>
           </div>
         </div>
         <section className="shop">
           <div className="container">
             <div className="row">
               <div className="col-lg-4 offset-2">
-                <img className="shop__girl" src={CoffeeGirl} alt="girl" />
+                <img className="shop__girl" src={CoffeeCup} alt="CoffeeCup" />
               </div>
               <div className="col-lg-4">
                 <div className="title">About our beans</div>
@@ -161,4 +157,4 @@ const mapDispatchToProps = dispatch => ({ dispatch });
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CoffeePage);
+)(ForYourPleasure);

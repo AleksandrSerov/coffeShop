@@ -5,7 +5,6 @@ import { combineReducers } from "redux";
 export const items = handleActions(
   {
     [actions.setInitialState](state, { payload }) {
-      console.log(payload);
       return { ...payload };
     }
   },

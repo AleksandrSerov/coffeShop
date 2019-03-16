@@ -6,10 +6,6 @@ import "./BestItem.sass";
 import { Link } from "react-router-dom";
 
 class BestItems extends Component {
-  bestHandleClick = () => {
-    console.log("click");
-  };
-
   renderBestItems = items => {
     return items.map((item, index) => {
       return (

@@ -9,6 +9,7 @@ import ItemPage from "./containers/ItemPage/ItemPage";
 
 import { connect } from "react-redux";
 import CoffeePage from "./containers/CoffeePage/CoffePage";
+import ForYourPleasure from "./containers/ForYourPleasure/ForYourPleasure";
 class App extends Component {
   service = new CoffeeService();
   componentWillMount() {
@@ -21,7 +22,7 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/our_coffee" component={CoffeePage} />
-        <Route exact path="/for_your_pleasure" component={MainPage} />
+        <Route exact path="/for_your_pleasure" component={ForYourPleasure} />
         <Route exact path="/item_page/:id" component={ItemPage} />
       </Router>
     );
