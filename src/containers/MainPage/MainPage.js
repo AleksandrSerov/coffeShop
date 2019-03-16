@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CoffeeService from "../../services/CoffeeService/CoffeService";
+import actions from "../../store/actions";
+import { connect } from "react-redux";
+
 import "./MainPage.sass";
 import BeansLogo from "../../media/logo/Beans_logo.svg";
 import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
@@ -16,43 +19,32 @@ class MainPage extends Component {
     super();
   }
   componentDidMount() {
-    this.service.getData().then(r => {
-      this.setState({
-        initialData: { ...r }
-      });
-    });
+    const { dispatch } = this.props;
+    dispatch(actions.handleSetInitialState(this.service.getData()));
   }
 
+  bestHandleClick = () => {
+    console.log("click");
+  };
+  renderBestItems = items => {
+    return items.map((item, index) => {
+      return (
+        <div className="best__item" key={index} onClick={this.bestHandleClick}>
+          <img src={item.url} alt={item.name} />
+          <div className="best__item-title">{item.name}</div>
+          <div className="best__item-price">{item.price}</div>
+        </div>
+      );
+    });
+  };
+
   render() {
-    console.log(this.state);
-    const items = (
-      <>
-        <div className="best__item">
-          <img
-            src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
-            alt="coffee"
-          />
-          <div className="best__item-title">Solimo Coffee Beans 2kg</div>
-          <div className="best__item-price">10.73$</div>
-        </div>
-        <div className="best__item">
-          <img
-            src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
-            alt="coffee"
-          />
-          <div className="best__item-title">Presto Coffee Beans 1kg</div>
-          <div className="best__item-price">15.99$</div>
-        </div>
-        <div className="best__item">
-          <img
-            src="https://www.sciencenews.org/sites/default/files/main/articles/100315_coffee_opener_NEW_0.jpg"
-            alt="coffee"
-          />
-          <div className="best__item-title">AROMISTICO Coffee 1kg</div>
-          <div className="best__item-price">6.99$</div>
-        </div>
-      </>
-    );
+    const { items } = this.props;
+    console.log(items);
+    const bestItems = items.bestsellers
+      ? this.renderBestItems(items.bestsellers)
+      : "";
+
     return (
       <>
         <div className="preview">
@@ -110,7 +102,7 @@ class MainPage extends Component {
             <div className="title">Our best</div>
             <div className="row">
               <div className="col-lg-10 offset-lg-1">
-                <div className="best__wrapper">{items}</div>
+                <div className="best__wrapper">{bestItems}</div>
               </div>
             </div>
           </div>
@@ -120,4 +112,14 @@ class MainPage extends Component {
     );
   }
 }
-export default MainPage;
+
+const mapStateToProps = state => {
+  return {
+    items: state.items
+  };
+};
+const mapDispatchToProps = dispatch => ({ dispatch });
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainPage);
