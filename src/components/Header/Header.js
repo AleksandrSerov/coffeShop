@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Header.sass";
 import Logo from "../../media/logo/Logo.svg";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
@@ -10,15 +11,15 @@ class Header extends Component {
           <header>
             <ul className="header">
               <li className="header__item">
-                <a href="#">
+                <Link to="/">
                   <img src={Logo} alt="logo" />
-                </a>
+                </Link>
               </li>
               <li className="header__item">
-                <a href="#">Our coffee</a>
+                <Link to="/our_coffee">Our coffee</Link>
               </li>
               <li className="header__item">
-                <a href="#">For your pleasure</a>
+                <Link to="/for_your_pleasure">For your pleasure</Link>
               </li>
             </ul>
           </header>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LogoBlack from "../../media/logo/Logo_black.svg";
 import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
+import { Link } from "react-router-dom";
 
 import "./Footer.sass";
 class Footer extends Component {
@@ -12,15 +13,15 @@ class Footer extends Component {
             <div className="col-lg-5 offset-lg-4">
               <ul className="footer">
                 <li className="footer__item">
-                  <a href="#">
+                  <Link to="/">
                     <img src={LogoBlack} alt="logo" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__item">
-                  <a href="#">Our coffee</a>
+                  <Link to="/our_coffee">Our coffee</Link>
                 </li>
                 <li className="footer__item">
-                  <a href="#">For your pleasure</a>
+                  <Link to="/for_your_pleasure">For your pleasure</Link>
                 </li>
               </ul>
             </div>
