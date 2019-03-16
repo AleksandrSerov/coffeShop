@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -32,9 +33,9 @@ class MainPage extends Component {
                   We makes every day full of energy and taste
                 </div>
                 <div className="preview__subtitle">Want to try our beans?</div>
-                <a href="#" className="preview__btn">
+                <Link to="/our_coffee" className="preview__btn">
                   More
-                </a>
+                </Link>
               </div>
             </div>
           </div>
