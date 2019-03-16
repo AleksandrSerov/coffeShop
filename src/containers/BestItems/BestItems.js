@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 
-import CoffeeService from "../../services/CoffeeService/CoffeService";
 import { connect } from "react-redux";
 
 import "./BestItem.sass";
 
 class BestItems extends Component {
-  service = new CoffeeService();
-
   bestHandleClick = () => {
     console.log("click");
   };

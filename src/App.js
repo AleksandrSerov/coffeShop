@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import CoffeeService from "./services/CoffeeService/CoffeService";
+import actions from "./store/actions";
 
 import "./App.sass";
 import MainPage from "./containers/MainPage/MainPage";
+import { connect } from "react-redux";
 import CoffeePage from "./containers/CoffeePage/CoffePage";
 class App extends Component {
+  service = new CoffeeService();
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(actions.handleSetInitialState(this.service.getData()));
+  }
+
   render() {
     return (
       <Router>
@@ -15,5 +24,5 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+const mapDispatchToProps = dispatch => ({ dispatch });
+export default connect(mapDispatchToProps)(App);

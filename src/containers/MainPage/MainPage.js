@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import BestItems from "../BestItems/BestItems";
-import CoffeeService from "../../services/CoffeeService/CoffeService";
-import actions from "../../store/actions";
 import { connect } from "react-redux";
 
 import "./MainPage.sass";
@@ -13,12 +11,6 @@ import BeansLogo from "../../media/logo/Beans_logo.svg";
 import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
 
 class MainPage extends Component {
-  service = new CoffeeService();
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(actions.handleSetInitialState(this.service.getData()));
-  }
-
   render() {
     return (
       <>
@@ -83,8 +75,4 @@ const mapStateToProps = state => {
     items: state.items
   };
 };
-const mapDispatchToProps = dispatch => ({ dispatch });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainPage);
+export default connect(mapStateToProps)(MainPage);
