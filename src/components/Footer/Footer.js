@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import LogoBlack from "../../media/logo/Logo_black.svg";
-import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import LogoBlack from '../../media/logo/Logo_black.svg';
+import BeansLogoDark from '../../media/logo/Beans_logo_dark.svg';
+import { Link } from 'react-router-dom';
 
-import "./Footer.sass";
+import './Footer.sass';
 class Footer extends Component {
   render() {
     return (

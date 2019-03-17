@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
-import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
+import BeansLogoDark from '../../media/logo/Beans_logo_dark.svg';
 
 class ItemPage extends Component {
   renderItem = () => {
@@ -43,7 +43,7 @@ class ItemPage extends Component {
   };
 
   render() {
-    const item = this.props.items.coffee ? this.renderItem() : "Error";
+    const item = this.props.items.coffee ? this.renderItem() : 'Error';
     return (
       <>
         <div className="banner">

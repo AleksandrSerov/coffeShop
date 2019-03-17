@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import CoffeeService from "./services/CoffeeService/CoffeService";
-import actions from "./store/actions";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import "./App.sass";
-import MainPage from "./containers/MainPage/MainPage";
-import ItemPage from "./containers/ItemPage/ItemPage";
+import CoffeeService from './services/CoffeeService/CoffeService';
+import actions from './store/actions';
 
-import { connect } from "react-redux";
-import CoffeePage from "./containers/CoffeePage/CoffePage";
-import ForYourPleasure from "./containers/ForYourPleasure/ForYourPleasure";
+import CoffeePage from './containers/CoffeePage/CoffePage';
+import MainPage from './containers/MainPage/MainPage';
+import ItemPage from './containers/ItemPage/ItemPage';
+import ForYourPleasure from './containers/ForYourPleasure/ForYourPleasure';
+
+import './App.sass';
 class App extends Component {
   service = new CoffeeService();
   componentWillMount() {

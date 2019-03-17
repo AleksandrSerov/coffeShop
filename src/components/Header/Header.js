@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "./Header.sass";
-import Logo from "../../media/logo/Logo.svg";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import './Header.sass';
+import Logo from '../../media/logo/Logo.svg';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {

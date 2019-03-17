@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import { connect } from "react-redux";
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import { connect } from 'react-redux';
 
-import BeansLogoDark from "../../media/logo/Beans_logo_dark.svg";
-import CoffeeCup from "../../media/img/coffee_cup.png";
+import BeansLogoDark from '../../media/logo/Beans_logo_dark.svg';
+import CoffeeCup from '../../media/img/coffee_cup.png';
 class ForYourPleasure extends Component {
   state = {
     shopItems: {}
@@ -51,7 +51,7 @@ class ForYourPleasure extends Component {
         ? this.renderShopItems(items.goods)
         : Object.entries(this.state.shopItems).length !== 0
         ? this.renderShopItems(this.state.shopItems)
-        : "error";
+        : 'error';
     return (
       <>
         <div className="banner">
@@ -68,25 +68,19 @@ class ForYourPleasure extends Component {
               </div>
               <div className="col-lg-4">
                 <div className="title">About our beans</div>
-                <img
-                  className="beanslogo"
-                  src={BeansLogoDark}
-                  alt="Beans logo"
-                />
+                <img className="beanslogo" src={BeansLogoDark} alt="Beans logo" />
                 <div className="shop__text">
-                  Extremity sweetness difficult behaviour he of. On disposal of
-                  as landlord horrible.
+                  Extremity sweetness difficult behaviour he of. On disposal of as landlord
+                  horrible.
                   <br />
                   <br />
-                  Afraid at highly months do things on at. Situation recommend
-                  objection do intention
+                  Afraid at highly months do things on at. Situation recommend objection do
+                  intention
                   <br />
                   so questions. <br />
-                  As greatly removed calling pleased improve an. Last ask him
-                  cold feel
+                  As greatly removed calling pleased improve an. Last ask him cold feel
                   <br />
-                  met spot shy want. Children me laughing we prospect answered
-                  followed. At it went
+                  met spot shy want. Children me laughing we prospect answered followed. At it went
                   <br />
                   is song that held help face.
                 </div>
@@ -112,22 +106,13 @@ class ForYourPleasure extends Component {
                 <div className="shop__filter">
                   <div className="shop__filter-label">Or filter</div>
                   <div className="shop__filter-group">
-                    <button
-                      className="shop__filter-btn"
-                      onClick={this.handleFiltreByCountry}
-                    >
+                    <button className="shop__filter-btn" onClick={this.handleFiltreByCountry}>
                       Brazil
                     </button>
-                    <button
-                      className="shop__filter-btn"
-                      onClick={this.handleFiltreByCountry}
-                    >
+                    <button className="shop__filter-btn" onClick={this.handleFiltreByCountry}>
                       Kenya
                     </button>
-                    <button
-                      className="shop__filter-btn"
-                      onClick={this.handleFiltreByCountry}
-                    >
+                    <button className="shop__filter-btn" onClick={this.handleFiltreByCountry}>
                       Columbia
                     </button>
                   </div>
